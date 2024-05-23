@@ -65,7 +65,7 @@ TodoRouter.get('/download-pdf', async (req, res) => {
       doc.text(item.desc, startX + colWidth, doc.y, { width: colWidth, align: 'left' });
       doc.text(item.date, startX + 2 * colWidth, doc.y, { width: colWidth, align: 'left' });
       doc.text(item.status, startX + 3 * colWidth, doc.y, { width: colWidth, align: 'left' });
-      doc.text(item.image, startX + 4 * colWidth, doc.y, { width: colWidth, align: 'left' });
+      doc.image(item.image, startX + 4 * colWidth, doc.y, { width: colWidth, height: colWidth });
       doc.moveDown();
     });
 
