@@ -49,20 +49,20 @@ TodoRouter.get('/download-pdf', async (req, res) => {
     doc.moveDown();
 
     // Add table headers
-    doc.fontSize(10).text('title', 100, doc.y, { width: 150, align: 'left' });
-    doc.fontSize(10).text('description', 250, doc.y, { width: 150, align: 'left' });
-    doc.fontSize(10).text('date', 250, doc.y, { width: 150, align: 'left' });
-    doc.fontSize(10).text('status', 250, doc.y, { width: 150, align: 'left' });
-    doc.fontSize(10).text('image', 250, doc.y, { width: 150, align: 'left' });
+    doc.fontSize(10).text('title', 35, doc.y, { width: 35, align: 'left' });
+    doc.fontSize(10).text('description', 35, doc.y, { width: 35, align: 'left' });
+    doc.fontSize(10).text('date', 35, doc.y, { width: 35, align: 'left' });
+    doc.fontSize(10).text('status', 35, doc.y, { width: 35, align: 'left' });
+    doc.fontSize(10).text('image', 35, doc.y, { width: 35, align: 'left' });
     doc.moveDown();
 
     // Add table rows
     data.forEach(item => {
-      doc.text(item.title, 100, doc.y, { width: 150, align: 'left' });
-      doc.text(item.desc, 250, doc.y, { width: 150, align: 'left' });
-      doc.text(item.date, 250, doc.y, { width: 150, align: 'left' });
-      doc.text(item.status, 250, doc.y, { width: 150, align: 'left' });
-      doc.text(item.image, 250, doc.y, { width: 150, align: 'left' });
+      doc.text(item.title, 35, doc.y, { width: 35, align: 'left' });
+      doc.text(item.desc, 35, doc.y, { width: 35, align: 'left' });
+      doc.text(item.date, 35, doc.y, { width: 35, align: 'left' });
+      doc.text(item.status, 35, doc.y, { width: 35, align: 'left' });
+      doc.text(item.image, 35, doc.y, { width: 35, align: 'left' });
       doc.moveDown();
     });
 
