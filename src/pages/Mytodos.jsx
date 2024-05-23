@@ -170,81 +170,80 @@ notify()
 
 
     return(
-       isloading ? <Box  marginLeft={{ base: "50px", md: "400px" }} w={"1100px"}><Stack>
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-       <Skeleton height='20px' />
-     </Stack></Box> :
-       <>
-        <Box w={"90%"}  margin={"auto"} marginLeft={{ base: "50px", md: "400px" }} width={"80%"}>
-        
-        <Button rightIcon={<ArrowDownIcon />} colorScheme='blue' variant='outline' margin={"auto"} alignSelf={"center"} marginTop={"25px"} onClick={getDown}>
-   Download Todos
-  </Button>
-                  <Table variant="striped" colorScheme="brand" marginTop={"80px"} width={"1000px"}>
-  <TableCaption fontSize={"30px"}>Todos</TableCaption>
-  <Thead>
-    <Tr>
-      <Th>Image</Th>
-      <Th>Title</Th>
-      <Th >Description</Th>
-      <Th >Due Date</Th>
-      <Th >Status</Th>
-      <Th >Edit</Th>
-      <Th >Delete</Th>
-    </Tr>
-  </Thead>
-  <Tbody>
-   {
-    mytodos.map((item,index)=>{
-      return(
-        <Tr>
-          <Td><Image src={item.image} alt="abc" boxSize={"80px"} borderRadius={"full"}/></Td>
-          <Td>{item.title}</Td>
-          <Td>{item.desc}</Td>
-          <Td>{item.date}</Td>
-          <Td>{item.status}</Td>
-          <Td><Button bg={"#3333cc"} size="sm" color={"white"} onClick={()=>{navigate(`/edit/${item._id}`)}}>
-    Edit
-  </Button></Td>
-  <Td><Button bg={"#ffcc00"} size="sm" color={"white"} variant={"outline"} onClick={()=>{
-    deletedodos(item._id)
-  }}>
-    Delete
-  </Button></Td>
-        </Tr>
-      )
-    })
-   }
-  </Tbody>
-  
-      <ToastContainer 
+      isloading ? (
+        <Box marginLeft={{ base: "10px", md: "50px", lg: "400px" }} w={{ base: "95%", md: "80%", lg: "70%" }} mx="auto">
+          <Stack>
+            {[...Array(30)].map((_, index) => (
+              <Skeleton key={index} height='20px' />
+            ))}
+          </Stack>
+        </Box>
+      ) : (
+        <>
+          <Box w={{ base: "95%", md: "80%", lg: "calc(100% - 400px)" }} ml={{ base: "15px", md: "60px", lg: "420px" }} mt="25px" marginLeft={{ base: "50px", md: "50px", lg: "350px" }}>
+            <Button 
+              rightIcon={<ArrowDownIcon />} 
+              colorScheme='blue' 
+              variant='outline' 
+              onClick={getDown}
+              mb="25px"
+              display="block"
+              mx="auto"
+            >
+              Download Todos
+            </Button>
+            <TableContainer w={{  md: "75%",lg:"100%" }}>
+              <Table variant="striped" colorScheme="brand">
+                <TableCaption fontSize="lg">Todos</TableCaption>
+                <Thead>
+                  <Tr>
+                    <Th>Image</Th>
+                    <Th>Title</Th>
+                    <Th>Description</Th>
+                    <Th>Due Date</Th>
+                    <Th>Status</Th>
+                    <Th>Edit</Th>
+                    <Th>Delete</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {mytodos.map((item) => (
+                    <Tr key={item._id}>
+                      <Td>
+                        <Image src={item.image} alt="todo" boxSize={{ base: "50px", md: "80px" }} borderRadius="full" />
+                      </Td>
+                      <Td>{item.title}</Td>
+                      <Td>{item.desc}</Td>
+                      <Td>{item.date}</Td>
+                      <Td>{item.status}</Td>
+                      <Td>
+                        <Button 
+                          bg="#3333cc" 
+                          size="sm" 
+                          color="white" 
+                          onClick={() => navigate(`/edit/${item._id}`)}
+                        >
+                          Edit
+                        </Button>
+                      </Td>
+                      <Td>
+                        <Button 
+                          bg="#ffcc00" 
+                          size="sm" 
+                          color="white" 
+                          variant="outline" 
+                          onClick={() => deletedodos(item._id)}
+                        >
+                          Delete
+                        </Button>
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </TableContainer>
+          </Box>
+          <ToastContainer 
             position="top-center"
             autoClose={5000}
             hideProgressBar={false}
@@ -255,19 +254,12 @@ notify()
             draggable
             pauseOnHover
             theme="colored"
-            transition={"Bounce"}
-            color="white"
-            background-color="#002244"
-            />
-      
- 
-</Table>
-        
-      
-        </Box>
+            transition="Bounce"
+          />
         </>
       
     )
+  )
 }
 
 export default Mytodos;

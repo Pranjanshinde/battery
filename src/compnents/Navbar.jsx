@@ -36,31 +36,31 @@ function Navbar(){
 
     return(
         <>
-        <Box  alignItems={"left"} height={"700px"} width={{ base: "50px", md: "300px" }} bgColor={"#002244"} borderRadius={{ base: "5px", md: "15px" }} color={"white"} position={"fixed"}  >
-            <Box textAlign={"center"} fontSize={{ base: "7px", md: "40px" }} fontStyle={"italic"} marginBottom={"30px"}>
+        <Box  alignItems={"left"} height={"700px"} width={{ base: "50px", md: "50px",lg:"300px" }} bgColor={"#002244"} borderRadius={{ base: "5px", md: "15px" }} color={"white"} position={"fixed"}  >
+            <Box textAlign={"center"} fontSize={{ base: "7px", md: "7px",lg:"40px" }} fontStyle={"italic"} marginBottom={"30px"}>
             🆃🅾🅳🅾🆂
             </Box>
             <Stack gap={0}>
             <Link to={"/"} >  <Box fontSize={"19px"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} _hover={{bgColor:"#0076CE"}} padding={"20px"}  h={"21px"} >
                 <CalendarIcon/>
-            <Text display={{ base: "none", md: "block" }} >My todos</Text>
+            <Text display={{ base: "none", md: "none",lg:"block" }} >My todos</Text>
             </Box></Link>
           <br/>
           <Link to={"/createother"}>  <Box fontSize={"19px"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} _hover={{bgColor:"#0076CE"}} padding={"20px"} h={"21px"} >
                 <SmallAddIcon/>
-            <Text display={{ base: "none", md: "block" }}>Create Todos</Text>
+            <Text display={{ base: "none", md: "none",lg:"block" }}>Create Todos</Text>
             </Box></Link>
            <br/>
            <Link to={"/othertodo"}>  <Box fontSize={"19px"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} _hover={{bgColor:"#0076CE"}} padding={"20px"} h={"21px"}>
                 <StarIcon/>
-            <Text display={{ base: "none", md: "block" }}>My Profile</Text>
+            <Text display={{ base: "none", md: "none",lg:"block" }}>My Profile</Text>
             </Box></Link>
             </Stack>
             <Box paddingTop={"350px"}>
                 {
                     token?<Box fontSize={"19px"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} _hover={{bgColor:"#0076CE"}} padding={"20px"} h={"21px"} onClick={logout}>
                     <LockIcon/>
-                <Text display={{ base: "none", md: "block" }}>Logout</Text>
+                <Text display={{ base: "none", md: "none",lg:"block" }}>Logout</Text>
                 <ToastContainer 
             position="top-center"
             autoClose={5000}
@@ -78,7 +78,7 @@ function Navbar(){
             />
                 </Box>:  <Link to={"/login"}> <Box fontSize={"19px"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} _hover={{bgColor:"#0076CE"}} padding={"20px"} h={"21px"}>
                     <UnlockIcon/>
-                <Text display={{ base: "none", md: "block" }}>Login</Text>
+                <Text display={{ base: "none", md: "none",lg:"block" }}>Login</Text>
                 </Box></Link>
                 }
             
