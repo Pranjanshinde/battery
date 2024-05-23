@@ -49,24 +49,29 @@ TodoRouter.get('/download-pdf', async (req, res) => {
     doc.moveDown();
 
     // Add table headers
-    doc.fontSize(10).text('title', 35, doc.y, { width: 35, align: 'left' });
-    doc.fontSize(10).text('description', 35, doc.y, { width: 35, align: 'left' });
-    doc.fontSize(10).text('date', 35, doc.y, { width: 35, align: 'left' });
-    doc.fontSize(10).text('status', 35, doc.y, { width: 35, align: 'left' });
-    doc.fontSize(10).text('image', 35, doc.y, { width: 35, align: 'left' });
+    const columns = ['title', 'desc', 'date', 'status', 'image'];
+    const startX = 50;
+    const startY = doc.y;
+    const colWidth = 100;
+    
+    columns.forEach((col, i) => {
+      doc.fontSize(10).text(col, startX + i * colWidth, startY, { width: colWidth, align: 'left' });
+    });
     doc.moveDown();
 
     // Add table rows
     data.forEach(item => {
-      doc.text(item.title, 35, doc.y, { width: 35, align: 'left' });
-      doc.text(item.desc, 35, doc.y, { width: 35, align: 'left' });
-      doc.text(item.date, 35, doc.y, { width: 35, align: 'left' });
-      doc.text(item.status, 35, doc.y, { width: 35, align: 'left' });
-      doc.text(item.image, 35, doc.y, { width: 35, align: 'left' });
+      doc.text(item.title, startX, doc.y, { width: colWidth, align: 'left' });
+      doc.text(item.desc, startX + colWidth, doc.y, { width: colWidth, align: 'left' });
+      doc.text(item.date, startX + 2 * colWidth, doc.y, { width: colWidth, align: 'left' });
+      doc.text(item.status, startX + 3 * colWidth, doc.y, { width: colWidth, align: 'left' });
+      doc.text(item.image, startX + 4 * colWidth, doc.y, { width: colWidth, align: 'left' });
       doc.moveDown();
     });
 
     doc.end();
+
+  
   } catch (error) {
     res.status(500).send('Error generating PDF');
   }
